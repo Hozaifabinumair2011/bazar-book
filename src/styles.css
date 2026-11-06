@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@import "@fontsource/hind/latin-400.css";
+@import "@fontsource/hind/latin-500.css";
+@import "@fontsource/hind/latin-600.css";
+@import "@fontsource/hind/latin-700.css";
+@import "@fontsource/hind/devanagari-400.css";
+@import "@fontsource/hind/devanagari-500.css";
+@import "@fontsource/hind/devanagari-600.css";
+@import "@fontsource/hind/devanagari-700.css";
+
+@theme {
+  --font-sans: "Hind", "Noto Sans Devanagari", sans-serif;
+  --color-paper: #f3efe6;
+  --color-card: #fffdf8;
+  --color-ink: #1c1915;
+  --color-muted: #5e574e;
+  --color-line: #e4d9c8;
+  --color-teal: #0e6b63;
+  --color-teal-soft: #e4f3f1;
+  --color-amber: #9a5310;
+  --color-amber-soft: #f8ecd9;
+  --color-danger: #8d342c;
+  --radius-xl: 0.875rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .field {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    padding: 0.75rem 0.85rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .field:focus {
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-teal) 25%, transparent);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .above-nav {
+    bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@page {
+  margin: 12mm;
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .slip-sheet {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
